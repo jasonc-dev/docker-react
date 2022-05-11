@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jasonc-dev/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jasonc-dev/docker-react npm run test
